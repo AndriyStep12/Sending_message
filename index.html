@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+
+
+    <div class="wrap">
+        <header class="head">
+            <h3>Contact me</h3>
+            <div class="line"></div>
+        </header>
+        <div class="box">
+            <div class="text-info">
+                <h2>Let me know if you want to talk about a potential collaboration. I'm available for freelance work.</h2>
+                <a href="email::infoname@mail.com">infoname@mail.com</a>
+            </div>
+
+            <form id="contact" class="contact">
+
+                <input type="text" placeholder="What's your name?" id="userName">
+                <input type="text" placeholder="Your email" id="userEmail">
+                <input type="text" placeholder="Tell me about your project" id="userProject">
+                <div class="place-butt">
+                    <button id="sendBtn">Get a Quote</button>
+                    <div class="imgs">
+                        <img src="./img/Group.png" class="group" alt="">
+                        <img src="./img/Arrow.png" alt="">
+                    </div>
+                </div>
+                
+
+            </form>
+
+        </div>
+        <div class="end">
+            <div class="text">
+                <p class="friend">Let's be Friends</p>
+            </div>
+            <div class="imgs-end">
+                <img src="./img/Group%2024.png" alt="">
+                <img src="./img/Group%2024.png" alt="">
+                <img src="./img/Group%2024.png" alt="">
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        sendBtn.onclick = function() {
+            const data = {
+                name: userName.value,
+                email: userEmail.value,
+                project: userProject.value,
+            }
+            sendEmailForm(data);
+        }
+
+
+        function sendEmailForm(formData) {
+            const form = document.getElementById('form');
+            fetch('send', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                })
+                .then(_ => {
+                    form.reset()
+                })
+                .catch(error => console.log(error));
+        }
+
+    </script>
+
+</body>
+
+</html>
